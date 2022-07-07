@@ -20,8 +20,11 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->string('image_url');
             $table->string('category');
+            $table->string('subcategory');
             $table->string('brand');
             $table->string('model');
+            $table->bigInteger('sold')->default(0);
+            $table->bigInteger('stock');
             $table->timestamps();
         });
     }

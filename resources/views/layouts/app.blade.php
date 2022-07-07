@@ -14,6 +14,10 @@
             {{ config('app.name', 'Laravel') }}
         </a> -->
     </main>
+
+    <footer>
+       
+    </footer>
 </body>
 
 </html>
