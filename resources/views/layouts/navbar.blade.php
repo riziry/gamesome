@@ -28,16 +28,30 @@
     </div>
     <div class="wishlist-header">
         <button type="submit" style="border: 0; background: transparent">
-            <a href="{{ url('/wishlist')   }}">
-                <img src="/Assets/images/love-header.png" width="25" height="25" />
-            </a>
+            @auth
+                <a href="/wishlist/{{Auth::user()->id}}">
+                    <img src="/Assets/images/love-header.png" width="25" height="25" />
+                </a>
+            @else
+                <a href="{{ route('login')   }}">
+                    <img src="/Assets/images/love-header.png" width="25" height="25" />
+                </a>
+            @endauth
+            
         </button>
     </div>
     <div class="cart-header">
         <button type="submit" style="border: 0; background: transparent">
-            <a href="{{ url('/cart')   }}">
-                <img src="/Assets/images/shopping-cart.png" width="25" height="25" />
-            </a>
+
+            @auth
+                <a href="/cart/{{   Auth::user()->id    }}">
+                    <img src="/Assets/images/shopping-cart.png" width="25" height="25" />
+                </a>
+            @else
+                <a href="{{ route('login')   }}">
+                    <img src="/Assets/images/shopping-cart.png" width="25" height="25" />
+                </a>
+            @endauth
         </button>
     </div>
     <div class="dropdownAccount">

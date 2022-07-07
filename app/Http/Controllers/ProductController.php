@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Wishlist;
+use App\Models\Cart;
 
 class ProductController extends Controller
 {
@@ -39,6 +41,41 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('frontend.singleProduct', compact('product'));
     }
+
+    public function add_to_cart($id, Request $request){
+        $product = Product::find($id);
+        $myCart = Cart::where('user_id', auth()->user()->id);
+        
+        if($myCart->where('product_id', $id)->exists()){
+            $myCart = $myCart->where('product_id', $id)->first();
+            $myCart->quantity += 1;
+            $myCart->save();
+        }else{
+            // dd($request);
+            $cart = new Cart;
+            $cart->user_id = auth()->user()->id;
+            $cart->product_id = $product->id;
+            $cart->quantity = $request->quantity;
+            $cart->save();
+        }
+
+        return redirect('/cart/'.auth()->user()->id);
+    }
+
+    public function add_to_wishlist($id){
+        $product = Product::find($id);
+        $myWishlist = Wishlist::where('user_id', auth()->user()->id);
+        
+        if($myWishlist->where('product_id', $id)->exists()){
+            return redirect('/item/'.$id)->with('alert', 'Product already in your wishlist');
+        }else{
+            $wishlist = new Wishlist;
+            $wishlist->user_id = auth()->user()->id;
+            $wishlist->product_id = $product->id;
+            $wishlist->save();
+        }
+        return redirect('/item/'.$id)->with('alert', 'Added to wishlist');
+    }   
 
 
 }

@@ -106,7 +106,7 @@
                                     <img src=" {{   $pAll->image_url  }}" alt="">
                                     <div class="card-p">
                                         {{  $pAll->name   }}<br>
-                                        <b>Rp. {{   $pAll->price  }}</b>
+                                        <b>Rp. {{   number_format($pAll->price, 2, ",", ".")     }}</b>
                                         <p class="card-sold">sold {{    $pAll-> sold   }} pcs</p>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
                                     <img src=" {{   $pMouse->image_url  }}" alt="">
                                     <div class="card-p">
                                         {{  $pMouse->name   }}<br>
-                                        <b>Rp. {{   $pMouse->price  }}</b>
+                                        <b>Rp. {{   number_format($pMouse->price, 2, ",", ".")     }}</b>
                                         <p class="card-sold">sold {{    $pMouse-> sold   }} pcs</p>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@
                                     <img src=" {{   $pMon->image_url  }}" alt="">
                                     <div class="card-p">
                                         {{  $pMon->name   }}<br>
-                                        <b>Rp. {{   $pMon->price  }}</b>
+                                        <b>Rp. {{   number_format($pMon->price, 2, ",", ".")     }}</b>
                                         <p class="card-sold">sold {{    $pMon-> sold   }} pcs</p>
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                                     <img src=" {{   $pKey->image_url  }}" alt="">
                                     <div class="card-p">
                                         {{  $pKey->name   }}<br>
-                                        <b>Rp. {{   $pKey->price  }}</b>
+                                        <b>Rp. {{   number_format($pKey->price, 2, ",", ".")     }}</b>
                                         <p class="card-sold">sold {{    $pKey-> sold   }} pcs</p>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                     <img src=" {{   $pHs->image_url  }}" alt="">
                                     <div class="card-p">
                                         {{  $pHs->name   }}<br>
-                                        <b>Rp. {{   $pHs->price  }}</b>
+                                        <b>Rp. {{   number_format($pHs->price, 2, ",", ".")     }}</b>
                                         <p class="card-sold">sold {{    $pHs-> sold   }} pcs</p>
                                     </div>
                                 </div>

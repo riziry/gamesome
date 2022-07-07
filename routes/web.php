@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-// use App\Models\wishlist;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +21,16 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/item', [ProductController::class, 'item']);
 
 Route::get('/item/{id}', [ProductController::class, 'clicked_item']);
+Route::post('/item/{id}/add_to_cart', [ProductController::class, 'add_to_cart']);
+Route::post('/item/{id}/add_to_wishlist', [ProductController::class, 'add_to_wishlist']);
 
-Route::get('/wishlist', [WishlistController::class, 'index']);
-Route::post('/wishlist',[WishlistController::class, 'add']);
+Route::get('/wishlist/{uID}', [WishlistController::class, 'index']);
+// Route::post('/wishlist',[WishlistController::class, 'add']);
+Route::delete('/wishlist/{id}/delete',[WishlistController::class, 'delete']);
+Route::post('/wishlist/{id}/add_to_cart', [WishlistController::class, 'add_to_cart']);
 
-Route::get('/cart', function () {
-    return view('frontend.cart');
-});
+Route::get('/cart/{uID}', [CartController::class, 'index']);
+Route::delete('/cart/{id}/delete', [CartController::class, 'delete']);
 
 Auth::routes();
 

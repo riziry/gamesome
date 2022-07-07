@@ -291,6 +291,22 @@ a.blue-button:hover{
   flex: 50%;
 }
 
+.flex-item-left input{
+  background-color: transparent;
+  border: none;
+  text-align: right;
+}
+
+.flex-item-left button{
+  border: none;
+}
+
+.flex-item-left img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
 .flex-item-right {
   background-color: white;
   flex: 50%;
@@ -320,14 +336,14 @@ a.blue-button:hover{
 
 .add-to-cart-button {
   background-color: #1d5edd;
-  width: 153px;
+  width: 120px;
   height: 44px;
   font-size: 14px;
   color: white;
   border-radius: 60px;
   border: none;
   font-weight: bold;
-  margin-left: 50%;
+  /* margin-left: 100px; */
 }
 
 .add-to-cart-button:hover {
@@ -358,6 +374,8 @@ a.blue-button:hover{
 
 .text-align-left{
   text-align: left;
+  /* display: inline; */
+  /* align-items: left; */
 }
 
 .cart-and-wishlist{
@@ -367,6 +385,7 @@ a.blue-button:hover{
 
 .cart-text{
   margin-left: 10%;
+  margin-bottom: 30px;
 }
 
 .summary-left{
@@ -414,6 +433,7 @@ img.lp {
   margin-top: 400px;
   margin-left: 123px;
   text-align: left;
+  z-index: -1;
 }
 
 .lp-brand {
@@ -538,6 +558,7 @@ a.card:link, a.card:visited {
   color: white;
   border-radius: 60px;
   border: none;
+  /* z-index: -2; */
   font-weight: bold;
   margin-bottom: 100px;
 }
@@ -837,4 +858,94 @@ a.text-button:hover{
 .container-margin{
   display: inline-block;
   margin-left: 50px;
+}
+
+.wishlist{
+  display: block;
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 100px;
+  /* border: 2px solid black; */
+  width: 90%;
+  justify-content: center;
+}
+
+.title-cart{
+  margin-left: 30px;
+  /* margin-bottom: 20px; */
+}
+
+.container-wishlist{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* margin-left: 3px; */
+  justify-content: left;
+  /* border: 2px dotted black; */
+}
+
+.detail-wishlist{
+  margin-left: 30px;
+}
+
+.cart-product-image img{
+  /* width: 200px; */
+  max-width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.cart-product-image{
+  width: 200px;
+  /* border: 2px dotted red; */
+}
+
+.quantity input{
+  background-color: transparent;
+  border: none;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.quantity button{
+  border: none;
+}
+
+.cart-price{
+  margin-left: 75%;
+  margin-top: 10px;
+}
+
+/* remove quantity arrow */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(27, 118, 255);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

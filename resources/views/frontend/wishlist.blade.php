@@ -2,70 +2,38 @@
 
 @section('content')
     <br /><br /><br />
-    <div class="cart-text">
-        <h1>Wishlist</h1>
+    <div class="wishlist">
+        <div class="cart-text">
+            <h1>Wishlist</h1>
+        </div>
+        <div class="cart-and-wishlist">
+            @foreach($wishlists as $ws)
+                <div class="container-wishlist">
+                    <div class="cart-product-image">
+                        <img src="{{    $ws->image_url  }}" alt="">
+                    </div>
+                    <div class="detail-wishlist">
+                        <h3>{{$ws->title}}</h3>
+                        <p>{{$ws->description}}</p>
+                        <b><p>Rp {{   number_format($ws->price, 2, ",", ".")     }}</p></b>
+                        <form action="/wishlist/{{$ws->id}}/delete" method="POST" style="margin-right:10px; float:left;">
+                            @METHOD('DELETE')
+                            @csrf
+                            <button class="add-to-cart-button" style="background-color: #ff6e6e;" onclick="return confirm('Are you sure to remove this product from wishlish?')">
+                                remove
+                            </button>
+                        </form>
+                        <form action="/wishlist/{{$ws->product_id}}/add_to_cart" method="POST">
+                            @csrf
+                            <button class="add-to-cart-button" onclick="alert('Product added to cart')">
+                                Add to cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+            @endforeach
+            <!-- endloop -->
+        </div>
     </div>
-    <div class="cart-and-wishlist">
-        <table>
-            <tr>
-                <td rowspan="5">
-                    <img src="./assets/images/mousepadsmall.png" alt="mousepadsmall">
-                </td>
-                <td>HyperX FURY S - Gaming Mouse Pad - Cloth (L)</td>
-            </tr>
-            <tr>
-                <td><b>Rp 259.000<b></td>
-            </tr>
-            <tr>
-                <td>
-                    <p></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <button class="add-to-cart-button">
-                    Add to cart
-                  </button>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <table>
-            <tr>
-                <td rowspan="5">
-                    <img src="./assets/images/mousepadsmall.png" alt="mousepadsmall">
-                </td>
-                <td>HyperX FURY S - Gaming Mouse Pad - Cloth (L)</td>
-            </tr>
-            <tr>
-                <td><b>Rp 259.000<b></td>
-            </tr>
-            <tr>
-                <td>
-                    <p></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <button class="add-to-cart-button">
-                    Add to cart
-                  </button>
-                </td>
-            </tr>
-        </table>
-        <hr>
-    </div>
-    </div>
-    <br /><br />
-
 @endsection
