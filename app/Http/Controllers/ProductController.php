@@ -75,7 +75,45 @@ class ProductController extends Controller
             $wishlist->save();
         }
         return redirect('/item/'.$id)->with('alert', 'Added to wishlist');
-    }   
+    }
+
+    public function search(Request $request){
+        if($request->has('category')){
+            $search = implode(' ', $request->category);
+        }else{
+            $search = $request->searchQueryInput;
+        }
+        
+            // $search = $request->searchQueryInput;
+            // $tempSearchResult = Product::all();
+        $list_word = explode(' ', $search);
+        // dd($list_word);
+
+        // foreach($list_word as $word){
+        //     $tempSearchResult = $tempSearchResult->where('name', 'like', '%'.$word.'%')->orWhere('model', 'like', '%'.$word.'%')->orWhere('category', 'like', '%'.$word.'%')->orWhere('brand', 'like', '%'.$word.'%')->orWhere('brand', 'like', '%'.$word.'%');
+        // }
+
+        $products = Product::where( function($query) use ($list_word){
+            foreach($list_word as $word){
+                $query->orWhere('name', 'like', '%'.$word.'%')->orWhere('model', 'like', '%'.$word.'%')->orWhere('category', 'like', '%'.$word.'%')->orWhere('brand', 'like', '%'.$word.'%')->orWhere('brand', 'like', '%'.$word.'%');
+            }
+        } )->get();
+
+        return view('frontend.item', compact('products'));
+    }
+
+    public function filter(Request $request){
+        $filter = $request->category;
+
+        $query = implode(' ', $filter);
+        dd($query);
+
+        foreach($filter as $word){
+            $products = Product::where('category', $word)->get();
+        }
+
+        return 1;
+    }
 
 
 }

@@ -7,24 +7,15 @@
     </div>
     <div class="dropdown">
         <a href="/item"><button class="dropbtn">Products</button></a>
-        
-        <!-- <div class="dropdown-content">
-            <a href="{{ url('/item')   }}">All</a>
-            <a href="{{ url('/item')   }}">Accessories</a>
-            <a href="{{ url('/item')   }}">External Mic</a>
-            <a href="{{ url('/item')   }}">Gaming Chair</a>
-            <a href="{{ url('/item')   }}">Headset</a>
-            <a href="{{ url('/item')   }}">Keyboard</a>
-            <a href="{{ url('/item')   }}">Monitor</a>
-            <a href="{{ url('/item')   }}">Mouse</a>
-            <a href="{{ url('/item')   }}">Mousepad</a>
-        </div> -->
     </div>
     <div class="searchBar">
-        <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search" value="" />
-        <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
-            <img src="/Assets/images/search.png" width="20" height="20" />
-        </button>
+        <form action="/item/search" method="GET">
+            <input id="searchQueryInput" style="float: left;" type="text" name="searchQueryInput" placeholder="Search" value="" />
+            <button id="searchQuerySubmit" style="margin-top:3px;" type="submit" name="searchQuerySubmit">
+                <img src="/Assets/images/search.png" width="20" height="20" />
+            </button>
+        </form>
+        
     </div>
     <div class="wishlist-header">
         <button type="submit" style="border: 0; background: transparent">

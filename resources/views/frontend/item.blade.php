@@ -4,40 +4,41 @@
 <div class="product-margin">
     <div class="filter-margin">
         <div class="availibility-margin">
-            <form action="">
+            <form action="/item/search" name='filter' method="GET">
                 <p><b>Category</b></p>
 
-                <input type="checkbox" id="category1" value="All">
+                <input type="checkbox" id="category1" value="">
                 <label for="category1">All</label><br>
 
-                <input type="checkbox" id="category2" value="Accessories">
+                <input type="checkbox" id="category2" name="category[]" value="accessories">
                 <label for="category2">Accessories</label><br>
 
-                <input type="checkbox" id="category3" value="External Mic">
+                <input type="checkbox" id="category3" name="category[]" value="external Mic">
                 <label for="category3">External Mic</label><br>
 
-                <input type="checkbox" id="category4" value="Gaming Chair">
+                <input type="checkbox" id="category4" name="category[]" value="gaming Chair">
                 <label for="category4">Gaming Chair</label><br>
 
-                <input type="checkbox" id="category5" value="Gaming Desk">
+                <input type="checkbox" id="category5" name="category[]" value="gaming Desk">
                 <label for="category5">Gaming Desk</label><br>
 
-                <input type="checkbox" id="category6" value="Headset">
+                <input type="checkbox" id="category6" name="category[]" value="headset">
                 <label for="category6">Headset</label><br>
 
-                <input type="checkbox" id="category7" value="Keyboard">
+                <input type="checkbox" id="category7" name="category[]" value="keyboard">
                 <label for="category7">Keyboard</label><br>
 
-                <input type="checkbox" id="category8" value="Monitor">
+                <input type="checkbox" id="category8" name="category[]" value="monitor">
                 <label for="category8">Monitor</label><br>
 
-                <input type="checkbox" id="category9" value="Mouse">
+                <input type="checkbox" id="category9" name="category[]" value="mouse">
                 <label for="category9">Mouse</label><br>
 
-                <input type="checkbox" id="category10" value="Mousepad">
+                <input type="checkbox" id="category10" name="category[]" value="mousepad">
                 <label for="category10">Mousepad</label><br>
-
-                <input class="apply-filter-button" type="submit" value="Apply Filter">
+                
+                <!-- <button type="submit"></button> -->
+                <input class="apply-filter-button" type="submit" value="Apply Filter" onclick="this.form.submit()">
             </form>
         </div>
 

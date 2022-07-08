@@ -18,14 +18,22 @@
                         <div class="price">Rp. {{   number_format($product->price, 2, ",", ".")     }}</div>
                     </div>
                     <div class="flex-item-right">
-                        <form id="add_to_cart" action="/item/{{$product->id}}/add_to_cart" method="POST">
-                            @csrf
-                            <button class="add-to-cart-button" style="margin-left: 190px; width:157px;" onclick="alert('Added to Chart');">
-                                <a class="blue-button" href="#">
+                        @auth
+                            <form id="add_to_cart" action="/item/{{$product->id}}/add_to_cart" method="POST">
+                                @csrf
+                                <button class="add-to-cart-button" style="margin-left: 190px; width:157px;" onclick="alert('Added to Chart');">
+                                    <a class="blue-button" href="#">
+                                        Add to Cart
+                                    </a>
+                                </button>
+                            </form>
+                        @else
+                            <button class="add-to-cart-button" href="/login" style="margin-left: 190px; width:157px;">
+                                <a class="blue-button" href="/login">
                                     Add to Cart
                                 </a>
                             </button>
-                        </form>
+                        @endauth
                        
                     </div>
                 </div>
@@ -36,21 +44,30 @@
                         <button onclick="document.getElementById('pQuantity').stepUp();">+</button>
                         <button onclick="document.getElementById('pQuantity').stepDown()">-</button>
                         <div class="text-align-left">
-                            <form style="width:50px; margin-bottom:10px; margin-right:0;" action="/item/{{$product->id}}/add_to_wishlist" method="POST">
-                                @csrf
+                            @auth
+                                <form style="width:50px; margin-bottom:10px; float:left;" action="/item/{{$product->id}}/add_to_wishlist" method="POST">
+                                    @csrf
+                                    <button type="submit" style="border: 0; background: transparent">
+                                        <a href='#'>
+                                            <img src="/Assets/images/love.png" width="30" height="30" />
+                                        </a>
+                                    </button>
+                                    <script>
+                                        var msg = "{{Session::get('alert')}}";
+                                        var exist = "{{Session::has('alert')}}";
+                                        if(exist){
+                                        alert(msg);
+                                        }
+                                    </script>
+                                </form>
+                            @else
                                 <button type="submit" style="border: 0; background: transparent">
-                                    <a href='#'>
+                                    <a href='/login'>
                                         <img src="/Assets/images/love.png" width="30" height="30" />
                                     </a>
                                 </button>
-                                <script>
-                                    var msg = "{{Session::get('alert')}}";
-                                    var exist = "{{Session::has('alert')}}";
-                                    if(exist){
-                                    alert(msg);
-                                    }
-                                </script>
-                            </form>
+                            @endauth
+                            
                             <button onclick="copyText()" style="border: 0; margin-left:0;  background: transparent">
                                 <a href='#'>
                                     <img src="/Assets/images/share.png" width="30" height="30" />
@@ -65,11 +82,19 @@
                         </div>
                     </div>
                     <div class="flex-item-right">
-                        <button class="buy-now-button">
-                            <a class="blue-button" href='https://twitch.tv/dzak1ng/'>
-                                Buy Now
-                            </a>
-                        </button>
+                        @auth
+                            <button class="buy-now-button">
+                                <a class="blue-button" href='https://twitch.tv/dzak1ng/'>
+                                    Buy Now
+                                </a>
+                            </button>
+                        @else
+                            <button class="buy-now-button">
+                                <a class="blue-button" href='/login'>
+                                    Buy Now
+                                </a>
+                            </button>
+                        @endauth
                     </div>
                 </div>
                 <br />

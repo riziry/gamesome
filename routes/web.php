@@ -19,6 +19,7 @@ use App\Http\Controllers\CartController;
 Route::get('/', [ProductController::class, 'index']);
 
 Route::get('/item', [ProductController::class, 'item']);
+Route::get('/item/search', [ProductController::class, 'search']);
 
 Route::get('/item/{id}', [ProductController::class, 'clicked_item']);
 Route::post('/item/{id}/add_to_cart', [ProductController::class, 'add_to_cart']);
@@ -31,6 +32,7 @@ Route::post('/wishlist/{id}/add_to_cart', [WishlistController::class, 'add_to_ca
 
 Route::get('/cart/{uID}', [CartController::class, 'index']);
 Route::delete('/cart/{id}/delete', [CartController::class, 'delete']);
+Route::get('/cart/{uID}/checkout', [CartController::class, 'checkout']);
 
 Auth::routes();
 
