@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\Cart;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductController extends Controller
 {
@@ -113,6 +115,24 @@ class ProductController extends Controller
         }
 
         return 1;
+    }
+
+    public function checkout(Request $request)
+    {   
+        $user = User::find(auth()->user()->id);
+        $product = Product::find($request->id);
+        
+        if($user->credit_card >= $product->price) {
+            $user->credit_card -= $product->price;
+            $user->update();
+            $product->sold += 1;
+            $product->update();
+            return redirect()->back()->with('alert', 'Successfully purchased');
+        }else{
+            return redirect()->back()->with('alert', 'Insufficient credit');
+        }
+
+        return redirect()->back()->with('alert', 'Successfully purchased');
     }
 
 

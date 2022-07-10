@@ -83,11 +83,16 @@
                     </div>
                     <div class="flex-item-right">
                         @auth
-                            <button class="buy-now-button">
-                                <a class="blue-button" href='https://twitch.tv/dzak1ng/'>
-                                    Buy Now
-                                </a>
-                            </button>
+                            <form action="/item/{{$product->id}}/checkout" name ='buy-now'method="POST">
+                                @METHOD('PUT')
+                                @csrf
+                                <button class="buy-now-button" type="submit" value="submit">
+                                    <input type="hidden" name="id" value="{{$product->id}}">
+                                    <a class="blue-button" href="">
+                                        Buy Now
+                                    </a>
+                                </button>
+                            </form>
                         @else
                             <button class="buy-now-button">
                                 <a class="blue-button" href='/login'>

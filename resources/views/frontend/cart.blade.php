@@ -50,23 +50,37 @@
                     <div class="buy-content">
                         <h1>Purchase Confirmed</h1>
                         <p>Shipment process will take no longer than a week. Please wait for the package after!</p>
-                        <button type="button" class="start-shopping-button-2">
-                            <!-- <form action="/cart/{{auth()->user()->id}}/checkout" method="POST">
-                                @METHOD('POST')
-                                @csrf
-                                <a class="blue-button" href=''>
-                                    Confirm
+                        <form action="/cart/{{auth()->user()->id}}/checkout" name="checkout" method="POST">
+                            @METHOD('DELETE')
+                            @csrf
+                            <button type='submit' value="submit" class="start-shopping-button-2">
+                                <input type="hidden" name='total_price' value="{{$total_price}}">
+                                <a class="blue-button" style="text-decoration:none; color:white">
+                                    confirm
                                 </a>
-                            </form> -->
-                                <a class="blue-button" href='/cart/{{auth()->user()->id}}/checkout'>
-                                    Confirm
-                                </a>
-                        </button>
+                            </button>
+                                
+                            <!-- <button type="button" type='submit' value="submit" class="start-shopping-button-2">
+                                    <a class="blue-button" href=''>
+                                        Confirm
+                                    </a> -->
+                            <!-- <a class="blue-button" href='/cart/{{auth()->user()->id}}/checkout'>
+                                Confirm
+                            </a> -->
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        @if(session()->has('alert'))
+            <div class="alert alert-success">
+                {{ session()->get('alert') }}
+            </div>
+        @endif
     </div>
+
+
 
     <script>
         // Get the modal
