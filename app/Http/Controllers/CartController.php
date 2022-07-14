@@ -41,6 +41,7 @@ class CartController extends Controller
         // dd($total_price, $user->credit_card);
 
         if($user->credit_card >= $total_price){
+            //payment
             $user->credit_card -= $total_price;
             $user->save();
             
